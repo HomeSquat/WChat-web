@@ -6,10 +6,10 @@
     <div class="layout-right">
       <split-pane :min-percent='10' :default-percent='20' split="vertical">
         <template slot="paneL">
-          A
+          <PersonList></PersonList>
         </template>
         <template slot="paneR">
-          <split-pane min-percent='50' :default-percent='80' split="horizontal">
+          <split-pane :min-percent='30' :default-percent='80' split="horizontal">
             <template slot="paneL">
               B
             </template>
@@ -25,7 +25,8 @@
 
 <script type="application/javascript">
 import splitPane from "vue-splitpane";
-import leftMenu from "./LeftMenu";
+import leftMenu from "./components/LeftMenu";
+import PersonList from "./components/PersonList"
 export default {
   name: "layout",
   props: {},
@@ -37,7 +38,8 @@ export default {
   methods: {},
   components: {
     splitPane,
-    leftMenu
+    leftMenu,
+    PersonList
   }
 };
 </script>
