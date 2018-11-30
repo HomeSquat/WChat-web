@@ -15,7 +15,7 @@
     </div>
     <div ref="wrapper" class="bottom">
       <ul class="chatList">
-        <draggable v-model="chatList" :options="{group:'people',sort: true,animation: 200,scroll:true}" @start="drag=true" @end="drag=false">
+        <draggable v-model="chatList" :options="{group:'people',sort: true,animation: 200,scroll:true}" @start="drag=true" @end="dragEnd">
           <transition-group>
             <li v-for="(chatItem,index) in chatList" :key="index" @click="clickChatItem(index)" :class="{isActive: index===isActiveIndex}" class="chatList--item">
               <div class="chatList--item__img">
@@ -152,6 +152,7 @@ export default {
       this.$refs.wrapper.style.height = document.body.clientHeight - 63 + "px";
       this.chatListScroll = new BScroll(this.$refs.wrapper, {
         click: true,
+        disableMouse: true,
         preventDefault: false,
         scrollbar: {
           fade: true,
@@ -170,6 +171,14 @@ export default {
     clickChatItem(index) {
       this.isActiveIndex = index;
       this.chatList[index].unreadNum = 0;
+    },
+    dragEnd(){
+      this.chatListScroll.refresh()
+      // this.chatListScroll.disable()
+      // setTimeout(function(){
+      //   this.chatListScroll.enable()
+      // },1000)
+
     }
   },
   components: {
