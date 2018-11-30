@@ -13,6 +13,7 @@
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",
     "vue-splitpane": "^1.0.2",
+    "vuedraggable": "^2.17.0",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
