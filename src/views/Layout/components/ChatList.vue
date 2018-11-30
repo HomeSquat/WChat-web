@@ -202,8 +202,9 @@ export default {
       _this.isActiveIndex = index;
       _this.chatList[index].unreadNum = 0;
       this.setCurrentChat({
-        id: 1,
+        id: _this.chatList[index].id,
         name: _this.chatList[index].name,
+        peopleNum: _this.chatList[index].peopleNum
       })
     }
   },

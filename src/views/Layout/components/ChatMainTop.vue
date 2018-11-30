@@ -1,6 +1,6 @@
 <template>
   <div class="chatMainTitle">
-    <div class="chatMainTitle--name">{{currentChat.name}}<span class="chatMainTitle--name__num">（{{currentChat.peopleNum}}）</span></div>
+    <div class="chatMainTitle--name">{{currentChat.name}}<span v-show="currentChat.peopleNum>1" class="chatMainTitle--name__num">（{{currentChat.peopleNum}}）</span></div>
     <div class="chatMainTitle--more iconfont im-gengduo"></div>
   </div>
 </template>

@@ -5,14 +5,18 @@
     </div>
     <div class="layout-right">
       <ChatList></ChatList>
-      <split-pane :min-percent='30' :default-percent='70' split="horizontal" class="main">
-        <template slot="paneL">
-          <ChatMainTop></ChatMainTop>
-        </template>
-        <template slot="paneR">
-          C
-        </template>
-      </split-pane>
+      <div class="main">
+        <ChatMainTop></ChatMainTop>
+        <split-pane :min-percent='30' :default-percent='70' split="horizontal" class="kanban">
+          <template slot="paneL">
+            b
+          </template>
+          <template slot="paneR">
+            C
+          </template>
+        </split-pane>
+      </div>
+
     </div>
   </div>
 </template>
@@ -52,5 +56,9 @@ export default {
       display: flex
       width:100%
       .main
+        display: flex
+        flex-direction: column
         width: 100%
+        .kanban
+          height: 100%
 </style>
