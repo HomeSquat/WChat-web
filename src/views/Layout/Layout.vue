@@ -4,19 +4,13 @@
       <leftMenu></leftMenu>
     </div>
     <div class="layout-right">
-      <split-pane :min-percent='10' :default-percent='20' split="vertical">
+      <ChatList></ChatList>
+      <split-pane :min-percent='30' :default-percent='70' split="horizontal" class="main">
         <template slot="paneL">
-          <PersonList></PersonList>
+          B
         </template>
         <template slot="paneR">
-          <split-pane :min-percent='30' :default-percent='80' split="horizontal">
-            <template slot="paneL">
-              B
-            </template>
-            <template slot="paneR">
-              C
-            </template>
-          </split-pane>
+          C
         </template>
       </split-pane>
     </div>
@@ -26,7 +20,7 @@
 <script type="application/javascript">
 import splitPane from "vue-splitpane";
 import leftMenu from "./components/LeftMenu";
-import PersonList from "./components/PersonList"
+import ChatList from "./components/ChatList"
 export default {
   name: "layout",
   props: {},
@@ -39,7 +33,7 @@ export default {
   components: {
     splitPane,
     leftMenu,
-    PersonList
+    ChatList
   }
 };
 </script>
@@ -49,9 +43,12 @@ export default {
     display: flex
     height: 100%
     &-left
-      width: 50px
+      width: 60px
       background-color: rgb(42, 41, 44)
       color: rgb(139, 139, 139)
     &-right
+      display: flex
       width:100%
+      .main
+        width: 100%
 </style>

@@ -100,16 +100,18 @@ export default {
     display: flex
     flex-direction: column
     justify-content: space-between
+    box-sizing: border-box
     height: 100%
+    padding-top: 10px
     .user
       position: relative
       box-sizing: border-box
-      width: 50px
-      height: 50px
+      width: 60px
+      height: 60px
       padding: 10px
       &__avatar
-        width: 30px
-        height: 30px
+        width: 40px
+        height: 40px
         border-radius: 3px
         cursor: pointer
       &__info
@@ -163,18 +165,18 @@ export default {
       justify-content center
       align-items: center
       .menu--listItem
-        width: 50px
-        height: 50px
+        width: 60px
+        height: 60px
         text-align: center
-        line-height: 50px
+        line-height: 60px
         color: rgb(139, 139, 139)
         cursor: pointer
         span
           font-size: 20px !important
 
     .menu-more
-      width: 50px
-      height: 50px
+      width: 60px
+      height: 60px
       text-align: center
-      line-height: 50px
+      line-height: 60px
 </style>
