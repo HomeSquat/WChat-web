@@ -1,19 +1,25 @@
 <template>
   <div class="chatMainTitle">
-    <div class="chatMainTitle--name">一起吃饭吧 <span class="chatMainTitle--name__num">（61）</span></div>
+    <div class="chatMainTitle--name">{{currentChat.name}}<span class="chatMainTitle--name__num">（61）</span></div>
     <div class="chatMainTitle--more iconfont im-gengduo"></div>
   </div>
 </template>
 
 <script type="application/javascript">
+import { mapGetters } from "vuex";
 export default {
   name: "ChatMainTop",
   props: {},
   data() {
     return {};
   },
-  created() {},
-  computed: {},
+  created() {
+  },
+  computed: {
+    ...mapGetters('App',{
+      currentChat: 'currentChat'
+    })
+  },
   methods: {},
   components: {}
 };

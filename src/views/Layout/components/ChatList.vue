@@ -15,7 +15,7 @@
     </div>
     <div ref="wrapper" class="bottom">
       <ul class="chatList">
-        <draggable v-model="chatList" :options="{group:'people',sort: true,animation: 200,scroll:true}" @start="drag=true" @end="dragEnd">
+        <draggable v-model="chatList" :options="{group:'people',sort: true,animation: 200,scroll:true}" @start="drag=true" @end="drag=false">
           <transition-group>
             <li v-for="(chatItem,index) in chatList" :key="index" @click="clickChatItem(index)" :class="{isActive: index===isActiveIndex}" class="chatList--item">
               <div class="chatList--item__img">
@@ -39,6 +39,7 @@
 import Input from "@/components/Input";
 import BScroll from "better-scroll";
 import draggable from "vuedraggable";
+import { mapActions } from 'vuex'
 export default {
   name: "PersonList",
   props: {},
@@ -169,17 +170,21 @@ export default {
   },
   computed: {},
   methods: {
+    ...mapActions('App',{
+      setCurrentChat: 'setCurrentChat'
+    }),
+    /**
+     * 点击对话列表的ITEM
+     * @param index
+     */
     clickChatItem(index) {
-      this.isActiveIndex = index;
-      this.chatList[index].unreadNum = 0;
-    },
-    dragEnd(){
-      this.chatListScroll.refresh()
-      // this.chatListScroll.disable()
-      // setTimeout(function(){
-      //   this.chatListScroll.enable()
-      // },1000)
-
+      const _this = this
+      _this.isActiveIndex = index;
+      _this.chatList[index].unreadNum = 0;
+      this.setCurrentChat({
+        name: _this.chatList[index].name,
+        id: 1
+      })
     }
   },
   components: {

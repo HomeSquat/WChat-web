@@ -71,7 +71,6 @@ export default {
      * @param event
      */
     clickAvatar(event){
-      console.log(event);
       this.$refs.userInfo.style.top = `${event.clientY}px`;
       this.$refs.userInfo.style.left = `${event.clientX}px`;
       this._showUserInfo();
