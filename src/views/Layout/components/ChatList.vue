@@ -66,82 +66,102 @@ export default {
       search: "", // 搜索框的值
       chatList: [
         {
+          id: 1,
           img:
             "http://5b0988e595225.cdn.sohucs.com/images/20170913/6703759e56444a02a7ac19a79e16e748.jpeg",
           name: "技术部——复线",
           firstMessage: "[动画表情]",
           unreadNum: 10,
+          peopleNum: 12,
           time: "昨天"
         },
         {
+          id: 2,
           img:
             "http://image.biaobaiju.com/uploads/20180918/15/1537256494-ZnSKMzEoBI.jpeg",
           name: "全国外卖红包群",
           firstMessage: "Yifan: [链接]",
           unreadNum: 99,
+          peopleNum: 300,
           time: "10:57"
         },
         {
+          id: 3,
           img:
             "http://imgsrc.baidu.com/image/c0%3Dshijue1%2C0%2C0%2C294%2C40/sign=9172e8049d2bd40756cadbbe13e0f424/34fae6cd7b899e5197e54c3848a7d933c8950db6.jpg",
           name: "家里蹲大学",
           firstMessage: "志哥: [图片]",
           unreadNum: 0,
+          peopleNum: 5,
           time: "10:58"
         },
         {
+          id: 4,
           img: "http://pic.qqtn.com/up/2018-2/2018022813173822478.jpg",
           name: "美团",
           firstMessage: "您被没事选中了",
           unreadNum: 0,
+          peopleNum: 1,
           time: "10:26"
         },
         {
+          id: 5,
           img:
             "http://img.zcool.cn/community/01870d57cd4fba0000018c1bd8c567.jpg@1280w_1l_2o_100sh.png",
           name: "一起吃饭吧",
           firstMessage: "[动画表情]",
           unreadNum: 0,
+          peopleNum: 90,
           time: "昨天"
         },
         {
+          id: 6,
           img:
             "http://img.zcool.cn/community/01a2a45938e699a8012193a35c2022.jpg",
-          name: "全国外卖红包群",
-          firstMessage: "Yifan: [链接]",
+          name: "辽",
+          firstMessage: "[链接]",
           unreadNum: 99,
+          peopleNum: 1,
           time: "10:57"
         },
         {
+          id: 7,
           img:
             "http://img.zcool.cn/community/015cb758e4c8fda801219c770b4bf4.png@1280w_1l_2o_100sh.png",
           name: "今天吃拔丝香蕉",
           firstMessage: "[动画表情]",
           unreadNum: 1,
+          peopleNum: 3,
           time: "三天前"
         },
         {
+          id: 8,
           img:
             "http://img.zcool.cn/community/01b32c58380bc7a8012060c838f7b7.jpg@2o.jpg",
           name: "浙商富豪群",
           firstMessage: "潘斐: 明天",
           unreadNum: 12,
+          peopleNum: 7,
           time: "10:57"
         },
         {
+          id: 9,
           img:
             "http://ww2.sinaimg.cn/thumb300/005OHrnkgw1evdtoe0xzxj30hs0hswf6.jpg",
           name: "志哥",
           firstMessage: "[动画表情]",
           unreadNum: 0,
+          peopleNum: 1,
           time: "刚刚"
         },
         {
+          id: 10,
           img:
             "http://life.southmoney.com/tuwen/UploadFiles_6871/201804/20180423165906671.jpg",
           name: "黄奕胜",
           firstMessage: "[链接]",
           unreadNum: 0,
+          peopleNum: 1,
           time: "10:57"
         }
       ]
@@ -182,8 +202,8 @@ export default {
       _this.isActiveIndex = index;
       _this.chatList[index].unreadNum = 0;
       this.setCurrentChat({
+        id: 1,
         name: _this.chatList[index].name,
-        id: 1
       })
     }
   },

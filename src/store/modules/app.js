@@ -2,8 +2,9 @@ const app = {
   namespaced: true,
   state: {
     currentChat: {
+      id: 1,
       name: "",
-      id: 1
+      peopleNum: 1
     }
   },
   getters: {
