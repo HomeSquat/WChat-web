@@ -151,7 +151,8 @@ export default {
     this.$nextTick(function() {
       this.$refs.wrapper.style.height = document.body.clientHeight - 63 + "px";
       this.chatListScroll = new BScroll(this.$refs.wrapper, {
-        click: true,
+        // click: true,
+        tap: true,
         disableMouse: true,
         preventDefault: false,
         scrollbar: {
