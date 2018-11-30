@@ -7,7 +7,7 @@
       <ChatList></ChatList>
       <split-pane :min-percent='30' :default-percent='70' split="horizontal" class="main">
         <template slot="paneL">
-          B
+          <ChatMainTop></ChatMainTop>
         </template>
         <template slot="paneR">
           C
@@ -20,7 +20,8 @@
 <script type="application/javascript">
 import splitPane from "vue-splitpane";
 import leftMenu from "./components/LeftMenu";
-import ChatList from "./components/ChatList"
+import ChatList from "./components/ChatList";
+import ChatMainTop from "./components/ChatMainTop";
 export default {
   name: "layout",
   props: {},
@@ -33,7 +34,8 @@ export default {
   components: {
     splitPane,
     leftMenu,
-    ChatList
+    ChatList,
+    ChatMainTop
   }
 };
 </script>
