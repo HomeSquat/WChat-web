@@ -22,17 +22,15 @@ export default {
   name: "ChatBox",
   props: {},
   data() {
-    return {
-    };
+    return {};
   },
-  watch: {
-  },
-  created() {
-  },
+  watch: {},
+  created() {},
   mounted() {
     this.$nextTick(function() {
+      const _this = this
       // this.$refs.wrapper.style.height = this.$refs.kanbanBox.offsetHeight + "px";
-      this.chatBoxScroll = new BScroll(this.$refs.wrapper, {
+      _this.chatBoxScroll = new BScroll(_this.$refs.wrapper, {
         // click: true,
         tap: true,
         disableMouse: true,
@@ -47,11 +45,15 @@ export default {
           easeTime: 300
         }
       });
+      document
+        .getElementsByClassName("splitter-pane-resizer")[0]
+        .addEventListener("mouseup", function() {
+          _this.chatBoxScroll.refresh()
+        });
     });
   },
   computed: {},
-  methods: {
-  },
+  methods: {},
   components: {
     splitPane
   }
