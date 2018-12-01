@@ -1,5 +1,5 @@
 <template>
-  <div class="ChatBox">
+  <div @mouseup="resize" class="ChatBox">
     <split-pane :min-percent='30' :default-percent='70' split="horizontal">
       <template slot="paneL">
         <div ref="wrapper" class="kanban">
@@ -22,13 +22,15 @@ export default {
   name: "ChatBox",
   props: {},
   data() {
-    return {};
+    return {
+      isResize: false
+    };
   },
   watch: {},
   created() {},
   mounted() {
     this.$nextTick(function() {
-      const _this = this
+      const _this = this;
       // this.$refs.wrapper.style.height = this.$refs.kanbanBox.offsetHeight + "px";
       _this.chatBoxScroll = new BScroll(_this.$refs.wrapper, {
         // click: true,
@@ -45,15 +47,26 @@ export default {
           easeTime: 300
         }
       });
-      document
-        .getElementsByClassName("splitter-pane-resizer")[0]
-        .addEventListener("mouseup", function() {
-          _this.chatBoxScroll.refresh()
-        });
+      const splitter_resizer = document.getElementsByClassName(
+        "splitter-pane-resizer"
+      )[0];
+      splitter_resizer.addEventListener("mousedown", function() {
+        _this.isResize = true;
+      });
     });
   },
   computed: {},
-  methods: {},
+  methods: {
+    /**
+     * 重置大小
+     */
+    resize() {
+      if (this.isResize) {
+        this.chatBoxScroll.refresh();
+        this.isResize = false;
+      }
+    }
+  },
   components: {
     splitPane
   }
