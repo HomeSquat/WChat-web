@@ -4,19 +4,13 @@
       <leftMenu></leftMenu>
     </div>
     <div class="layout-right">
-      <ChatList></ChatList>
+      <div class="list">
+        <ChatList></ChatList>
+      </div>
       <div class="main">
         <ChatMainTop></ChatMainTop>
-        <split-pane :min-percent='30' :default-percent='70' split="horizontal" class="kanban">
-          <template slot="paneL">
-            b
-          </template>
-          <template slot="paneR">
-            C
-          </template>
-        </split-pane>
+        <ChatBox></ChatBox>
       </div>
-
     </div>
   </div>
 </template>
@@ -26,6 +20,7 @@ import splitPane from "vue-splitpane";
 import leftMenu from "./components/LeftMenu";
 import ChatList from "./components/ChatList";
 import ChatMainTop from "./components/ChatMainTop";
+import ChatBox from "./components/ChatBox";
 export default {
   name: "layout",
   props: {},
@@ -36,10 +31,10 @@ export default {
   computed: {},
   methods: {},
   components: {
-    splitPane,
     leftMenu,
     ChatList,
-    ChatMainTop
+    ChatMainTop,
+    ChatBox
   }
 };
 </script>
