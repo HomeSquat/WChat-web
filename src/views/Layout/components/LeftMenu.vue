@@ -27,7 +27,11 @@
       </ul>
     </div>
     <div class="menu-more">
-      <span class="iconfont im-liebiao"></span>
+      <span @click.stop="moreShow = !moreShow" class="iconfont im-liebiao"></span>
+      <ul v-show="moreShow" class="menu-more--list">
+        <li class="menu-more--list__item">意见反馈</li>
+        <li class="menu-more--list__item">设置</li>
+      </ul>
     </div>
   </div>
 </template>
@@ -61,12 +65,13 @@ export default {
         }
       ],
       userInfoShow: false,
+      moreShow: false,
       isActiveIndex: 0
     };
   },
   created() {},
   mounted() {
-    this.globalClick(this._hideUserInfo);
+    this.globalClick(this._global);
   },
   computed: {},
   methods: {
@@ -83,6 +88,21 @@ export default {
       this._showUserInfo();
     },
     /**
+     * 切换菜单栏
+     * @param index
+     */
+    selectItem(index) {
+      this.isActiveIndex = index;
+      this.setCurrentMenu(index);
+    },
+    /**
+     * 隐藏更多列表
+     * @private
+     */
+    _hideMore(){
+      this.moreShow = false;
+    },
+    /**
      * 显示用户详细信息
      * @private
      */
@@ -96,13 +116,9 @@ export default {
     _hideUserInfo() {
       this.userInfoShow = false;
     },
-    /**
-     * 切换菜单栏
-     * @param index
-     */
-    selectItem(index) {
-      this.isActiveIndex = index;
-      this.setCurrentMenu(index);
+    _global(){
+      this._hideMore()
+      this._hideUserInfo()
     }
   },
   components: {}
@@ -191,10 +207,30 @@ export default {
           color: rgb(209, 209, 209)
         span
           font-size: 20px !important
-
     .menu-more
-      width: 60px
-      height: 60px
-      text-align: center
-      line-height: 60px
+      position: relative
+      cursor: pointer
+      span
+        display: inline-block
+        width: 60px
+        height: 60px
+        text-align: center
+        line-height: 60px
+      &:hover
+        color: rgb(209, 209, 209)
+      &--list
+        position: absolute
+        left: 60px
+        bottom: 30px
+        z-index: 9
+        width: 170px
+        &__item
+          padding: 20px 15px
+          background: rgb(46, 45, 42)
+          text-align: left
+          line-height: 14px
+          font-size: 14px
+          color: rgb(140, 140, 140)
+          &:hover
+            background: rgb(48, 48, 48)
 </style>
