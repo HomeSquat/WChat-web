@@ -21,8 +21,8 @@
         </div>
       </div>
       <ul class="menu--list">
-        <li v-for="(menuItem,index) in itemList" :key="index" class="menu--listItem">
-          <span :class="menuItem.icon" class="iconfont"></span>
+        <li v-for="(menuItem,index) in itemList" :key="index" :class="{isActive: isActiveIndex===index}" @click="selectItem(index)" class="menu--listItem">
+          <span :class="[isActiveIndex===index? menuItem.activeIcon : menuItem.icon]" class="iconfont"></span>
         </li>
       </ul>
     </div>
@@ -33,44 +33,51 @@
 </template>
 
 <script type="application/javascript">
+import { mapActions } from "vuex";
 export default {
   name: "LeftMenu",
   props: {},
   data() {
     return {
-      itemList: [ // 菜单栏选项
+      itemList: [
+        // 菜单栏选项
         {
           type: "message",
           icon: "im-duihuaxiaoxi",
+          activeIcon: "im-duihuaxinxitianchong",
           isNew: false
         },
         {
           type: "contact",
           icon: "im-addressbook",
+          activeIcon: "im-addressbook_fill",
           isNew: true
         },
         {
           type: "collection",
           icon: "im-shoucang1",
+          activeIcon: "im-shoucang",
           isNew: false
         }
       ],
-      userInfoShow: false
+      userInfoShow: false,
+      isActiveIndex: 0
     };
   },
-  created() {
-  },
-  mounted(){
+  created() {},
+  mounted() {
     this.globalClick(this._hideUserInfo);
   },
-  computed: {
-  },
+  computed: {},
   methods: {
+    ...mapActions("App", {
+      setCurrentMenu: "setCurrentMenu"
+    }),
     /**
      * 点击头像，显示用户详细信息
      * @param event
      */
-    clickAvatar(event){
+    clickAvatar(event) {
       this.$refs.userInfo.style.top = `${event.clientY}px`;
       this.$refs.userInfo.style.left = `${event.clientX}px`;
       this._showUserInfo();
@@ -79,15 +86,23 @@ export default {
      * 显示用户详细信息
      * @private
      */
-    _showUserInfo(){
-      this.userInfoShow = true
+    _showUserInfo() {
+      this.userInfoShow = true;
     },
     /**
      * 隐藏用户详细信息
      * @private
      */
-    _hideUserInfo(){
-      this.userInfoShow = false
+    _hideUserInfo() {
+      this.userInfoShow = false;
+    },
+    /**
+     * 切换菜单栏
+     * @param index
+     */
+    selectItem(index) {
+      this.isActiveIndex = index;
+      this.setCurrentMenu(index);
     }
   },
   components: {}
@@ -170,6 +185,10 @@ export default {
         line-height: 60px
         color: rgb(139, 139, 139)
         cursor: pointer
+        &.isActive
+          color: rgb(18, 150, 17) !important
+        &:hover
+          color: rgb(209, 209, 209)
         span
           font-size: 20px !important
 

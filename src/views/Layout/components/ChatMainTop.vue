@@ -31,7 +31,7 @@ export default {
     justify-content: space-between
     align-items: center
     box-sizing: border-box
-    height: 63px
+    height: 67px
     padding: 24px 30px 15px
     border-bottom: 1px solid rgb(231, 231, 231)
     background: rgb(245, 245, 245)

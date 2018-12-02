@@ -1,18 +1,5 @@
 <template>
   <div class="chat">
-    <div class="top">
-      <im-input
-          v-model="search"
-          :blurStyle="blurStyle"
-          :focusStyle="focusStyle"
-          :placeholder="'搜索'"
-          clear
-          class="search">
-        <span slot="leftIcon" class="search__icon iconfont im-sousuo"></span>
-        <div slot="clear" class="search__clear">x</div>
-      </im-input>
-      <div class="addChatRoom iconfont im-jia"></div>
-    </div>
     <div ref="wrapper" class="bottom">
       <ul class="chatList">
         <draggable v-model="chatList" :options="{group:'people',sort: true,animation: 200,scroll:true}" @start="drag=true" @end="drag=false">
@@ -36,12 +23,11 @@
 </template>
 
 <script type="application/javascript">
-import Input from "@/components/Input";
 import BScroll from "better-scroll";
 import draggable from "vuedraggable";
-import { mapActions } from 'vuex'
+import { mapActions } from "vuex";
 export default {
-  name: "PersonList",
+  name: "ChatList",
   props: {},
   filters: {
     unreadNum2Str(unreadNum) {
@@ -50,20 +36,7 @@ export default {
   },
   data() {
     return {
-      // 样式start
-      blurStyle: {
-        width: "190px",
-        height: "26px",
-        "border-radius": "3px",
-        background: "rgb(219, 217, 216)"
-      },
-      focusStyle: {
-        border: "1px solid rgb(218, 216, 215)",
-        background: "#fff"
-      },
-      // 样式end
       isActiveIndex: 5, // 当前选中的聊天item序号
-      search: "", // 搜索框的值
       chatList: [
         {
           id: 1,
@@ -190,26 +163,25 @@ export default {
   },
   computed: {},
   methods: {
-    ...mapActions('App',{
-      setCurrentChat: 'setCurrentChat'
+    ...mapActions("App", {
+      setCurrentChat: "setCurrentChat"
     }),
     /**
      * 点击对话列表的ITEM
      * @param index
      */
     clickChatItem(index) {
-      const _this = this
+      const _this = this;
       _this.isActiveIndex = index;
       _this.chatList[index].unreadNum = 0;
       this.setCurrentChat({
         id: _this.chatList[index].id,
         name: _this.chatList[index].name,
         peopleNum: _this.chatList[index].peopleNum
-      })
+      });
     }
   },
   components: {
-    "im-input": Input,
     draggable
   }
 };
@@ -219,35 +191,6 @@ export default {
   .chat
     box-sizing: border-box
     width: 250px
-    background: rgb(233, 231, 231)
-    .top
-      display: flex
-      padding: 27px 15px 10px
-      align-items: center
-      .search
-        .search__icon
-          font-size: 14px
-        .search__clear
-          width: 14px
-          height: 14px
-          border-radius: 50%
-          background: rgb(197, 197, 197)
-          text-align: center
-          line-height: 14px
-          font-size: 10px
-      .addChatRoom
-        width: 26px
-        height: 26px
-        margin-left: 10px
-        border-radius: 3px
-        background: rgb(219, 217, 216)
-        text-align: center
-        line-height: 26px
-        font-size: 12px
-        color: rgb(88, 88, 88)
-        cursor: pointer
-        &:hover
-          background: rgb(209, 209, 209)
     .bottom
       position: relative
       overflow: hidden
