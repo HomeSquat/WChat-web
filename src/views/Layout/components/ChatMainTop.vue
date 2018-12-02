@@ -33,6 +33,7 @@ export default {
     box-sizing: border-box
     height: 63px
     padding: 24px 30px 15px
+    border-bottom: 1px solid rgb(231, 231, 231)
     background: rgb(245, 245, 245)
     &--name
       font-weight: 500
