@@ -6,8 +6,8 @@
     <div class="layout-right">
       <div class="list">
         <Search></Search>
-        <ChatList v-show="currentMenu===0"></ChatList>
-        <FriendList v-show="currentMenu===1"></FriendList>
+        <ChatList v-if="currentMenu===0"></ChatList>
+        <FriendList v-if="currentMenu===1"></FriendList>
       </div>
       <div class="main">
         <ChatMainTop></ChatMainTop>
@@ -33,8 +33,8 @@ export default {
   },
   created() {},
   computed: {
-    ...mapGetters('App',{
-      currentMenu: 'currentMenu'
+    ...mapGetters("App", {
+      currentMenu: "currentMenu"
     })
   },
   methods: {},

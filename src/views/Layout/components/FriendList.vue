@@ -154,6 +154,7 @@ export default {
             display: flex
             align-items: center
             padding: 15px
+            cursor: pointer
             img
               width: 36px
               height: 36px
