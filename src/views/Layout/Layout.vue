@@ -9,10 +9,11 @@
         <ChatList v-if="currentMenu===0"></ChatList>
         <FriendList v-if="currentMenu===1"></FriendList>
       </div>
-      <div class="main">
+      <div v-if="!isWelcome" class="main">
         <ChatMainTop></ChatMainTop>
         <ChatBox></ChatBox>
       </div>
+      <Welcome v-else></Welcome>
     </div>
   </div>
 </template>
@@ -24,6 +25,7 @@ import ChatList from "./components/ChatList";
 import FriendList from "./components/FriendList";
 import ChatMainTop from "./components/ChatMainTop";
 import ChatBox from "./components/ChatBox";
+import Welcome from "./components/Welcome"
 import { mapGetters } from "vuex";
 export default {
   name: "layout",
@@ -34,7 +36,8 @@ export default {
   created() {},
   computed: {
     ...mapGetters("App", {
-      currentMenu: "currentMenu"
+      currentMenu: "currentMenu",
+      isWelcome: "isWelcome"
     })
   },
   methods: {},
@@ -44,7 +47,8 @@ export default {
     ChatList,
     FriendList,
     ChatMainTop,
-    ChatBox
+    ChatBox,
+    Welcome
   }
 };
 </script>

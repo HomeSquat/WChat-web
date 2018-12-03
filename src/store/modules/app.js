@@ -1,6 +1,7 @@
 const app = {
   namespaced: true,
   state: {
+    isWelcome: true,
     currentMenu: 0, // 0：聊天列表，1：好友列表，2：收藏
     currentChat: {
       id: 1,
@@ -9,8 +10,9 @@ const app = {
     }
   },
   getters: {
-    currentChat: state => state.currentChat,
-    currentMenu: state => state.currentMenu
+    isWelcome:    state =>  state.isWelcome,
+    currentChat:  state =>  state.currentChat,
+    currentMenu:  state =>  state.currentMenu
   },
   mutations: {
     SET_CURRENTCHAT: (state, currentChat) => {
@@ -18,6 +20,9 @@ const app = {
     },
     SET_CURRENTMENU: (state, currentMenu) => {
       state.currentMenu = currentMenu;
+    },
+    SET_ISWELCOME: (state, isWelcome) => {
+      state.isWelcome = isWelcome
     }
   },
   actions: {
@@ -36,6 +41,14 @@ const app = {
      */
     setCurrentMenu({ commit }, currentMenu) {
       commit("SET_CURRENTMENU", currentMenu);
+    },
+    /**
+     * 设置是否是欢迎界面
+     * @param commit
+     * @param isWelcome
+     */
+    setIsWelcome({ commit }, isWelcome){
+      commit("SET_ISWELCOME",isWelcome)
     }
   }
 };

@@ -212,7 +212,8 @@ export default {
   computed: {},
   methods: {
     ...mapActions("App", {
-      setCurrentChat: "setCurrentChat"
+      setCurrentChat: "setCurrentChat",
+      setIsWelcome: "setIsWelcome"
     }),
     /**
      * 点击对话列表的ITEM
@@ -222,6 +223,7 @@ export default {
       const _this = this;
       _this.isActiveIndex = index;
       _this.chatList[index].unreadNum = 0;
+      this.setIsWelcome(false);
       this.setCurrentChat({
         id: _this.chatList[index].id,
         name: _this.chatList[index].name,

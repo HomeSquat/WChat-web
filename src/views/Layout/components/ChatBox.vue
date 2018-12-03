@@ -3,8 +3,8 @@
     <split-pane :min-percent='30' :default-percent='70' split="horizontal">
       <template slot="paneL">
         <div ref="wrapper" class="messages">
-          <ul class="content">
-            <li v-for="i in 30" :key="i">...{{i}}</li>
+          <ul ref="content" class="content">
+            <li v-for="i in 70" :key="i">...{{i}}</li>
           </ul>
         </div>
       </template>
@@ -14,7 +14,7 @@
             <div class="edit--tools__items">
               <div class="edit--tools__item iconfont im-biaoqing"></div>
               <div class="edit--tools__item iconfont im-wenjianjia"></div>
-              <div class="edit--tools__item iconfont im-duihua"></div>
+              <div class="edit--tools__item iconfont im-liaotian"></div>
             </div>
             <!--<div class="edit&#45;&#45;history iconfont im-gengduo"></div>-->
           </div>
@@ -76,6 +76,7 @@ export default {
     resize() {
       if (this.isResize) {
         this.chatBoxScroll.refresh();
+        this.chatBoxScroll.scrollTo(0,-(this.$refs.content.offsetHeight-this.$refs.wrapper.offsetHeight))
         this.isResize = false;
       }
     }
