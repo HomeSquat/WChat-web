@@ -10,6 +10,7 @@
         @input="handleInput"
         @focus="onFocus"
         @blur="onBlur"
+        :autocomplete="type === 'password'? 'new-password': 'off'"
         class="input">
     <span ref="leftIcon" class="left-icon" v-if="$slots.leftIcon">
       <slot name="leftIcon" class="icon"></slot>
@@ -31,7 +32,7 @@ export default {
     // 输入框类型
     type: {
       type: String,
-      default: 'text'
+      default: "text"
     },
     // 是否有清除按钮
     clear: {
@@ -40,19 +41,19 @@ export default {
     },
     placeholder: {
       type: String,
-      default: '请输入内容'
+      default: "请输入内容"
     },
     // 失去焦点时的样式
     blurStyle: {
       type: Object,
-      default(){
+      default() {
         return {
-          width: '200px',
-          height: '30px',
-          padding: '4px 8px',
+          width: "200px",
+          height: "30px",
+          padding: "4px 8px",
           border: "1px solid #ccc",
-          'border-radius': '4px',
-          background: '#fff'
+          "border-radius": "4px",
+          background: "#fff"
         };
       }
     },
@@ -64,8 +65,7 @@ export default {
           border: "1px solid #409EFF"
         };
       }
-    },
-
+    }
   },
   data() {
     return {
@@ -75,29 +75,34 @@ export default {
       isClear: false
     };
   },
-  created() {
-  },
-  mounted(){
-    if(this.$slots.clear || this.clear){
+  created() {},
+  mounted() {
+    if (this.$slots.clear || this.clear) {
       const clearWidth = this.$refs.clear.offsetWidth;
-      this.$refs.clear.style.right = clearWidth/4 + 'px';
-      this.blurS = Object.assign({},this.blurS,{'padding-right': clearWidth*3/2+'px'})
+      this.$refs.clear.style.right = clearWidth / 4 + "px";
+      this.blurS = Object.assign({}, this.blurS, {
+        "padding-right": (clearWidth * 3) / 2 + "px"
+      });
     }
-    if(this.$slots.leftIcon){
+    if (this.$slots.leftIcon) {
       const iconWidth = this.$refs.leftIcon.offsetWidth;
-      this.$refs.leftIcon.style.left = iconWidth/4 + 'px';
-      this.blurS = Object.assign({},this.blurS,{'padding-left': iconWidth*2+'px'})
-    }else if(this.$slots.rightIcon){
+      this.$refs.leftIcon.style.left = iconWidth / 4 + "px";
+      this.blurS = Object.assign({}, this.blurS, {
+        "padding-left": iconWidth * 2 + "px"
+      });
+    } else if (this.$slots.rightIcon) {
       const iconWidth = this.$refs.rightIcon.offsetWidth;
-      this.$refs.rightIcon.style.right = iconWidth/4 + 'px';
-      this.blurS = Object.assign({},this.blurS,{'padding-right': iconWidth*2+'px'})
+      this.$refs.rightIcon.style.right = iconWidth / 4 + "px";
+      this.blurS = Object.assign({}, this.blurS, {
+        "padding-right": iconWidth * 2 + "px"
+      });
     }
   },
   computed: {
     boxStyle() {
       if (this.isFocus) {
-        return Object.assign({},this.blurS,this.focusS)
-      }else{
+        return Object.assign({}, this.blurS, this.focusS);
+      } else {
         return this.blurS;
       }
     }
@@ -119,22 +124,22 @@ export default {
      * 输入框输入时
      * @param event
      */
-    handleInput(event){
+    handleInput(event) {
       const val = event.target.value;
-      if(val.length>0){
-        this.isClear = true
-      }else{
-        this.isClear = false
+      if (val.length > 0) {
+        this.isClear = true;
+      } else {
+        this.isClear = false;
       }
-      this.$emit('input', val);
+      this.$emit("input", val);
     },
     /**
      * 清空输入框
      */
-    clearVal(){
-      this.$refs.input.value = ''
-      this.isClear = false
-      this.$emit('input', this.$refs.input.value);
+    clearVal() {
+      this.$refs.input.value = "";
+      this.isClear = false;
+      this.$emit("input", this.$refs.input.value);
     }
   },
   components: {}

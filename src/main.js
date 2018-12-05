@@ -1,9 +1,9 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
-import store from "./store/index";
-import './global.js';
-import '@/assets/index.styl';
+import store from "./store";
+import "./global.js";
+import "@/assets/index.styl";
 
 new Vue({
   router,

@@ -7,12 +7,14 @@ const app = {
       id: 1,
       name: "",
       peopleNum: 1
-    }
+    },
+    openWChatLogin: false // 是否打开微信登录窗口
   },
   getters: {
     isWelcome:    state =>  state.isWelcome,
     currentChat:  state =>  state.currentChat,
-    currentMenu:  state =>  state.currentMenu
+    currentMenu:  state =>  state.currentMenu,
+    openWChatLogin: state => state.openWChatLogin
   },
   mutations: {
     SET_CURRENTCHAT: (state, currentChat) => {
@@ -23,6 +25,9 @@ const app = {
     },
     SET_ISWELCOME: (state, isWelcome) => {
       state.isWelcome = isWelcome
+    },
+    SET_OPENWCHATLOGIN: (state, openWChatLogin) => {
+      state.openWChatLogin = openWChatLogin
     }
   },
   actions: {
@@ -49,6 +54,14 @@ const app = {
      */
     setIsWelcome({ commit }, isWelcome){
       commit("SET_ISWELCOME",isWelcome)
+    },
+    /**
+     * 设置是否显示微信登录窗口
+     * @param commit
+     * @param openWChatLogin
+     */
+    setOpenWChatLogin({ commit }, openWChatLogin){
+      commit("SET_OPENWCHATLOGIN", openWChatLogin)
     }
   }
 };
