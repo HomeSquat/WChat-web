@@ -36,6 +36,7 @@
 <script type="application/javascript">
 import Input from "@/components/Input";
 import DragBox from "@/components/DragBox";
+import Cookies from "js-cookie";
 import { mapActions } from "vuex";
 export default {
   name: "WChatLogin",
@@ -77,6 +78,7 @@ export default {
      * 登录微信，等接口，假设登录成功
      */
     loginWChat() {
+      Cookies.set("Token", "wj2eMI2nDC1Z1LR9ovCdLCUrDSG77a7F");
       this.$router.push({ name: "wchat" });
     }
   },

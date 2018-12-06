@@ -1,5 +1,10 @@
 const staticRouterMap = [
   {
+    path: "",
+    name: "",
+    redirect: "/login"
+  },
+  {
     path: "/login",
     name: "login",
     component: () =>
